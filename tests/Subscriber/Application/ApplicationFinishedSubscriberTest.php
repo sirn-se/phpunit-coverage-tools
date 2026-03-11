@@ -493,6 +493,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParameters(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertEquals(
             new ApplicationFinishedSubscriber(
                 pathToCloverXml: 'tests/clover.xml',
@@ -514,6 +518,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParameters2(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertEquals(
             new ApplicationFinishedSubscriber(
                 pathToCloverXml: 'tests/clover.xml',
@@ -537,6 +545,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParametersFromFile(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertEquals(
             expected: new ApplicationFinishedSubscriber(
                 pathToCloverXml: 'tests/clover.xml',
@@ -558,6 +570,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParametersWhenInvalidMinCoverage(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertNull(
             actual: ApplicationFinishedSubscriber::fromConfigurationAndParameters(
                 configuration: (new Builder())->build([
@@ -571,6 +587,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParametersWhenCoverageTooHigh(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertNull(
             actual: ApplicationFinishedSubscriber::fromConfigurationAndParameters(
                 configuration: (new Builder())->build([
@@ -584,6 +604,10 @@ class ApplicationFinishedSubscriberTest extends TestCase
 
     public function testFromConfigurationAndParametersWhenRulesAreEmpty(): void
     {
+        $this->exitter
+            ->expects($this->never())
+            ->method('exit');
+
         $this->assertNull(
             ApplicationFinishedSubscriber::fromConfigurationAndParameters(
                 configuration: (new Builder())->build([
